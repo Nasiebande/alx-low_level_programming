@@ -1,0 +1,20 @@
+ize.c:10:2: error: expected declaration specifiers before ‘printf’
+   10 |  printf("Size of a char: %lu byte(s)\n", sizeof(char));
+      |  ^~~~~~
+6-size.c:11:2: error: expected declaration specifiers before ‘printf’
+   11 |  printf("Size of an int: %lu byte(s)\n", sizeof(int));
+      |  ^~~~~~
+6-size.c:12:2: error: expected declaration specifiers before ‘printf’
+   12 |  printf("Size of a long int: %lu byte(s)\n", sizeof(long int));
+      |  ^~~~~~
+6-size.c:13:2: error: expected declaration specifiers before ‘printf’
+   13 |  printf("Size of a long long int: %lu byte(s)\n", sizeof(long long int));
+      |  ^~~~~~
+6-size.c:14:2: error: expected declaration specifiers before ‘printf’
+   14 |  printf("Size of a float: %lu byte(s)\n", sizeof(float));
+      |  ^~~~~~
+6-size.c:15:2: error: expected declaration specifiers before ‘return’
+   15 |  return (0)
+      |  ^~~~~~
+root@97b5bec98aaf:~/alx-low_level_programming/0x00-hello_world# 
+
