@@ -2,8 +2,8 @@
 
 /**
  * puts_half - function that prints half of a string
- *
  * @str: pointer to char
+ *
  * Return: nothing
  */
 
