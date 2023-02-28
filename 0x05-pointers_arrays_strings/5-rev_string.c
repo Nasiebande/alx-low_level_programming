@@ -3,12 +3,13 @@
 
 /**
  * rev_string - function that reverses a string
- * @s: String to reverse
+ * @s: string to reverse
  * Return: nothing
  */
+
 void rev_string(char *s)
 {
-	int i =0;
+	int i = 0;
 	int aux = 0;
 	char 1temp;
 
