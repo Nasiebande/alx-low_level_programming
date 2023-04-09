@@ -13,7 +13,9 @@ void error_exit(int exit_code, const char *format, ...)
 {
 	dprintf(STDERR_FILENO, "Error: ");
 	va_list args;
+
 	va_start(args, format);
+
 	vdprintf(STDERR_FILENO, format, args);
 	va_end(args);
 	exit(exit_code);
