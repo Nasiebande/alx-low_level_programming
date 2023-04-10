@@ -35,7 +35,8 @@ void cp(const char *file_from, const char *file_to)
 	if (fd_from == -1)
 		error_exit(98, "Can't read from file %s\n", file_from);
 
-	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC,
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd_to == -1)
 		error_exit(99, "Can't write to %s\n", file_to);
 
