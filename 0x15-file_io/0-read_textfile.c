@@ -1,44 +1,54 @@
 #include "main.h"
-#include <stdlib.h>
+#include <stdlib>
 
 /**
- * read_textfile- Read text file print to STDOUT.
- * @filename: Text file being read
+ * read_textfile - Reads a text file and prints to STDOUT.
+ * @filename: Name of text file to be read.
  * @letters: Number of letters to be read.
- * Return: Actual number of bytes read and printed
- * or 0 when function fails or filename is NULL
+ *
+ * Return: Number of bytes read and printed to STDOUT.
+ * 0 if function fails or filename is NULL.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
+	int fd;
+	char *buf;
+	ssize_t t, w;
+
 	if (filename == NULL)
+	{
+		fprintf(stderr, "Error: Filename cannot be NULL.\n");
 		return (0);
+	}
 
-	int fd = open(filename, O_RDONLY);
-
+	fd = open(filename, O_RDONLY);
 	if (fd == -1)
+	{
+		fprintf(stderr, "Error opening file %s: %s\n", filename, strerror(errno));
 		return (0);
+	}
 
-	char *buf = malloc(sizeof(char) * letters);
-
+	buf = malloc(sizeof(char) * letters);
 	if (buf == NULL)
 	{
+		fprintf(stderr, "Error allocating memory for buffer.\n");
 		close(fd);
 		return (0);
 	}
 
-	ssize_t bytesRead = read(fd, buf, letters);
-
-	if (bytesRead == -1)
+	t = read(fd, buf, letters);
+	if (t == -1)
 	{
+		fprintf(stderr, "Error reading from file %s: %s\n", filename, strerror(errno));
 		free(buf);
 		close(fd);
 		return (0);
 	}
 
-	ssize_t bytesWritten = write(STDOUT_FILENO, buf, bytesRead);
-
-	if (bytesWritten == -1 || bytesWritten != bytesRead)
+	w = write(STDOUT_FILENO, buf, t);
+	if (w == -1)
 	{
+		fprintf(stderr, "Error writing to STDOUT: %s\n", strerror(errno));
 		free(buf);
 		close(fd);
 		return (0);
@@ -46,5 +56,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	free(buf);
 	close(fd);
-	return (bytesWritten);
+
+	return (w);
 }
